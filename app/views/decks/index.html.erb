@@ -1,0 +1,16 @@
+<div class="container-fluid full-width">
+  <div class="row row-no-gutter">
+    <div class="col-xs-6 col-sm-3 title" style="background-image: url()">
+      <a class="overlay" href="#" style="word-wrap: break-word; white-space: normal;">
+        <h1>+<br>New Deck</h1>
+      </a>
+    </div>
+    <% @decks.each do |deck| %>
+      <div class="col-xs-6 col-sm-3 title" style="background-image: url(<%= deck.img_url %>)">
+        <a class="overlay" href="#" style="word-wrap: break-word; white-space: normal;">
+          <h1><%= deck.name %></h1>
+        </a>
+      </div>
+    <% end %>
+  </div>
+</div>
