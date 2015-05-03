@@ -9,4 +9,5 @@ describe User do
   it { should validate_presence_of :password }
   it { should validate_length_of(:password).is_at_least(7) }
   it { should have_many :decks }
+  it { should have_many :cards }
 end
