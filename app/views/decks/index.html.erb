@@ -1,14 +1,14 @@
 <div class="row row-no-gutter">
-  <div class="col-xs-6 col-sm-3 title" style="background-image: url(<%= asset_path "deck.jpg" %>)">
+  <div class="col-xs-6 col-sm-3 title" style="background-image: url(<%= asset_path "green.jpg" %>)">
     <%= link_to new_deck_path, class: "overlay", style: "word-wrap: breakword; white-space: normal;" do %>
       <h1 class="add"><i class="fa fa-plus-circle"></i><br>New Deck</h1>
     <% end %>
   </div>
   <% @decks.each do |deck| %>
     <div class="col-xs-6 col-sm-3 title" style="background-image: url(<%= deck.img_url %>)">
-      <a class="overlay" href="#" style="word-wrap: break-word; white-space: normal;">
-        <h1><%= deck.name %></h1>
-      </a>
+      <%= link_to deck_cards_path(deck), class: "overlay", style: "word-wrap: break-word; white-space: normal;" do %>
+        <h1><%= deck.name.titleize %></h1>
+      <% end %>
     </div>
   <% end %>
 </div>

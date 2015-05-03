@@ -9,6 +9,8 @@
           <%= f.password_field :password_confirmation, hide_label: true, placeholder: "Confirm password" %>
           <%= f.submit "Sign Up", class: "btn btn-primary" %>
         <% end %>
+        <br>
+        <%= link_to "Or click here to log in.", login_path %>
       </div>
     </div>
   </div>

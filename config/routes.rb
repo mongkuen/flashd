@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'decks#index'
-  resources :decks, only: [:new, :create]
+  resources :decks, only: [:new, :create, :show] do
+    resources :cards
+  end
 
   get 'signup', to: 'users#new'
   post 'signup', to: 'users#create'
