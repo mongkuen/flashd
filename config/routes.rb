@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'decks#index'
-  resources :decks, only: [:new, :create, :show] do
+  resources :decks do
     resources :cards
   end
 

@@ -3,11 +3,7 @@
     <div class="centered-form">
       <div class="border">
         <h1><i class="fa fa-plus-circle"></i> New Deck</h1>
-        <%= bootstrap_form_for @deck do |f| %>
-          <%= f.text_field :name, hide_label: true, placeholder: "Deck Name (Required)" %>
-          <%= f.text_field :img_url, hide_label: true, placeholder: "Background Image Url (Optional)" %>
-          <%= f.submit "Create", class: "btn btn-primary" %>
-        <% end %>
+        <%= render 'deck_form' %>
       </div>
     </div>
   </div>

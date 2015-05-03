@@ -19,4 +19,29 @@ describe CardsController do
       expect(response).to render_template :index
     end
   end
+
+  describe "GET new" do
+    context "logged_in" do
+      let(:deck) { Fabricate(:deck) }
+      before do
+        set_current_user
+        get :new, deck_id: deck.id
+      end
+
+      it "sets new @card" do
+        expect(assigns(:card)).to be_a_new(Card)
+      end
+
+      it "renders new" do
+        expect(response).to render_template :new
+      end
+   end
+
+    it_behaves_like "require user signup" do
+      let(:action) do
+        deck = Fabricate(:deck)
+        get :new, deck_id: deck.id
+      end
+    end
+  end
 end

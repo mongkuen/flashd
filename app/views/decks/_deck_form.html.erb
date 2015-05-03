@@ -1,0 +1,5 @@
+<%= bootstrap_form_for @deck do |f| %>
+  <%= f.text_field :name, hide_label: true, placeholder: "Deck Name (Required)" %>
+  <%= f.text_field :img_url, hide_label: true, placeholder: "Background Image Url (Optional)" %>
+  <%= f.submit @deck.new_record? ? "Create Deck" : "Edit Deck", class: "btn btn-primary" %>
+<% end %>

@@ -21,4 +21,12 @@ class ApplicationController < ActionController::Base
   def hide_from_user
     redirect_to root_path if logged_in?
   end
+
+  def belongs_to_current_user?(obj)
+    current_user == obj.user ? true : false
+  end
+
+  def deny_access(obj)
+    redirect_to root_path if !belongs_to_current_user?(obj)
+  end
 end

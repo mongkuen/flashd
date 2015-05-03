@@ -4,10 +4,7 @@ feature "nav bar behavior" do
   let(:user) { Fabricate(:user) }
 
   scenario "Hides signup/login when logged in" do
-    visit login_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
+    sign_in(user)
     expect(page).not_to have_content("Sign Up")
     expect(page).not_to have_content("Log In")
   end
