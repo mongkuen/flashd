@@ -15,14 +15,22 @@ describe DecksController do
   end
 
   describe "GET new" do
-    it "sets new @deck" do
-      get :new
-      expect(assigns(:deck)).to be_instance_of(Deck)
-    end
+    context "logged_in" do
+      before { set_current_user }
 
-    it "renders new" do
-      get :new
-      expect(response).to render_template :new
+      it "sets new @deck" do
+        get :new
+        expect(assigns(:deck)).to be_a_new(Deck)
+      end
+
+      it "renders new" do
+        get :new
+        expect(response).to render_template :new
+      end
+   end
+
+    it_behaves_like "require user signup" do
+      let(:action) { get :new }
     end
   end
 end

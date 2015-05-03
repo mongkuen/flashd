@@ -1,0 +1,15 @@
+<div class="background" style="background-image: url(<%= asset_path "book.jpg" %>)">
+  <div class="overlay">
+    <div class="centered-form">
+      <div class="border">
+        <h1>Sign Up</h1>
+        <%= bootstrap_form_for @user, url: signup_path do |f| %>
+          <%= f.email_field :email, hide_label: true, placeholder: "Email Address" %>
+          <%= f.password_field :password, hide_label: true, placeholder: "Password (at least 7 characters)" %>
+          <%= f.password_field :password_confirmation, hide_label: true, placeholder: "Confirm password" %>
+          <%= f.submit "Sign Up", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

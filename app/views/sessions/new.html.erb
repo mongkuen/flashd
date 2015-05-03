@@ -1,0 +1,19 @@
+<div class="background" style="background-image: url(<%= asset_path "book.jpg" %>)">
+  <div class="overlay">
+    <div class="centered-form">
+      <div class="border">
+        <h1>Log In</h1>
+          <% if flash[:error].present? %>
+            <div class="error">
+              <%= flash[:error] %>
+            </div>
+          <% end %>
+          <%= bootstrap_form_tag url: '/login' do |f| %>
+            <%= f.email_field :email, hide_label: true, placeholder: "Email Address" %>
+            <%= f.password_field :password, hide_label: true, placeholder: "Password" %>
+            <%= f.submit "Log In", class: "btn btn-primary" %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>

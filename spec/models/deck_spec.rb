@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe Deck do
   it { should validate_presence_of :name }
+  it { should validate_presence_of :user }
+  it { should belong_to :user }
 
   describe "#recent_decks" do
     it "should return deck objects" do
