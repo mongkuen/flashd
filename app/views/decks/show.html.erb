@@ -8,10 +8,10 @@
         <h2><i class="fa fa-info-circle"></i><br>Deck Info:</h2>
         <h1><%= @deck.name %></h1>
         <hr>
-        <h3>Deck Created:</h3>
-        <p><%= @deck.created_at.to_formatted_s(:short)  %></p>
-        <h3>Cards in Deck:</h3>
-        <p><%= @deck.cards.count %></p>
+        <h3>DECK CREATED:</h3>
+        <h4><%= @deck.created_at.to_formatted_s(:short)  %></h4>
+        <h3>CARDS IN DECK:</h3>
+        <h4><%= @deck.cards.count %></h4>
         <% if @deck.user == current_user %>
           <%= link_to edit_deck_path(@deck) do%>
             <div class="edit-icons">

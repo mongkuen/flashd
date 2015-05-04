@@ -8,7 +8,7 @@
         <h1><%= @card.title %></h1>
         <hr>
         <h3><%= @card.heading.upcase %></h3>
-        <h3><%= @card.description %></h3>
+        <h4><%= simple_format(@card.description) %></h4>
         <% if @card.user == current_user %>
           <%= link_to edit_deck_card_path(@card.deck, @card) do%>
             <div class="edit-icons">
