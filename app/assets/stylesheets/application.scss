@@ -72,6 +72,9 @@ a:hover {
   padding: 50px 35% 0 35%;
   display: table-cell;
   vertical-align: middle;
+  @media (max-width: 992px) {
+    padding: 50px 25% 0 25%;
+  }
   @media (max-width: 750px) {
     padding: 50px 15% 0 15%;
   }

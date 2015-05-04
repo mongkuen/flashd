@@ -4,14 +4,16 @@
       <h1 class="add"><%= @deck.name.titleize %></h1>
     <% end %>
   </div>
-  <div class="col-xs-6 col-sm-3 title" style="background-image: url(<%= asset_path "green.jpg" %>)">
-    <%= link_to new_deck_card_path(@deck), class: "overlay", style: "word-wrap: breakword; white-space: normal;" do %>
-      <h1 class="add"><i class="fa fa-plus-circle"></i><br>New Card</h1>
-    <% end %>
-  </div>
+  <% if @deck.user == current_user %>
+    <div class="col-xs-6 col-sm-3 title" style="background-image: url(<%= asset_path "green.jpg" %>)">
+      <%= link_to new_deck_card_path(@deck), class: "overlay", style: "word-wrap: breakword; white-space: normal;" do %>
+        <h1 class="add"><i class="fa fa-plus-circle"></i><br>New Card</h1>
+      <% end %>
+    </div>
+  <% end %>
   <% @cards.each do |card| %>
     <div class="col-xs-6 col-sm-3 title" style="background-image: url(<%= card.img_url %>)">
-      <%= link_to "", class: "overlay", style: "word-wrap: break-word; white-space: normal;" do %>
+      <%= link_to deck_card_path(@deck, card), class: "overlay", style: "word-wrap: break-word; white-space: normal;" do %>
         <h1><%= card.title.titleize %></h1>
       <% end %>
     </div>
