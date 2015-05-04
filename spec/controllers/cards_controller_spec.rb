@@ -188,8 +188,8 @@ describe CardsController do
         expect(Card.first.title).to eq(card_edit[:title])
       end
 
-      it "redirects to deck_cards_path(@deck)" do
-        expect(response).to redirect_to deck_cards_path(deck)
+      it "redirects to deck_card_path(@deck, @card)" do
+        expect(response).to redirect_to deck_card_path(deck, card)
       end
     end
 

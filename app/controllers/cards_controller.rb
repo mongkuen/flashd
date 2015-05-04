@@ -33,7 +33,7 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(card_params)
-      redirect_to deck_cards_path(@deck)
+      redirect_to deck_card_path(@deck, @card)
     else
       render :edit
     end
