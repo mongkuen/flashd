@@ -32,4 +32,14 @@ describe Deck do
       expect(Deck.recent_decks).to eq([deck_new, deck_old])
     end
   end
+
+  describe "#has_many :cards, dependent: :destroy" do
+    it "destroys associated cards when destroyed" do
+      deck = Fabricate(:deck)
+      card = Fabricate(:card, deck: deck)
+      card = Fabricate(:card, deck: deck)
+      Deck.first.destroy
+      expect(Card.count).to eq(0)
+    end
+  end
 end

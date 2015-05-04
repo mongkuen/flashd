@@ -172,21 +172,29 @@ describe DecksController do
   end
 
   describe "DELETE destroy" do
-    before { set_current_user }
+    context "valid destroy" do
+      let(:deck) { Fabricate(:deck, user: current_user) }
+      before do
+        set_current_user
+        delete :destroy, id: deck.id
+      end
 
-    it "sets @deck" do
-      deck = Fabricate(:deck)
-      delete :destroy, id: deck.id
-      expect(assigns(:deck).name).to eq(deck.name)
+      it "sets @deck" do
+        expect(assigns(:deck).name).to eq(deck.name)
+      end
+
+      it "deletes deck" do
+        expect(Deck.count).to eq(0)
+      end
+
+      it "redirects to root_path" do
+        expect(response).to redirect_to root_path
+      end
     end
 
-    it "deletes deck" do
-      deck = Fabricate(:deck, user: current_user)
-      delete :destroy, id: deck.id
-      expect(Deck.count).to eq(0)
-    end
 
     it "wrong user access denied" do
+      set_current_user
       user_2 = Fabricate(:user)
       deck_2 = Fabricate(:deck, user: user_2)
       delete :destroy, id: deck_2.id

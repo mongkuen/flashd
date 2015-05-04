@@ -18,3 +18,6 @@ deck_6 = Deck.create(name: "Vintage Should Be Last (Also not mine)", img_url: "h
 
 puppies_card_1 = Card.create(title: "Corgi", heading: "Two of these", description: "Adorable!", img_url: "http://xrdj144og6l4bdn0u3zy34o9.wpengine.netdna-cdn.com/wp-content/uploads/2015/04/Gorgeous_puppies.jpg", user: user, deck: deck_2)
 puppies_card_1 = Card.create(title: "Bealge", heading: "Just One", description: "Cute!", img_url: "http://www.youwall.com/papel/cute_puppy_wallpaper_72013.jpg", user: user, deck: deck_2)
+
+not_my_card_1 = Card.create(title: "Terrier", heading: "Vintage", description: "Cameraman dog!", img_url: "http://images.fineartamerica.com/images-medium-large-5/vintage-pho-dog-grapher-westie-edward-fielding.jpg", user: adam, deck: deck_6)
+not_my_card_2 = Card.create(title: "People?", heading: "Wait a minute", description: "These dogs think they're people", img_url: "http://static.tumblr.com/emnuxgj/Jilli9ouu/1913-_pittie_frederick-schnell-father-in-law-ardolph-kline-shorpy.jpg", user: adam, deck: deck_6)

@@ -1,13 +1,14 @@
 require 'rails_helper'
 
-feature "edit deck" do
+feature "show deck" do
   let(:user) { Fabricate(:user) }
 
   scenario "shows edit/delete if deck belongs to current_user" do
     deck = Fabricate(:deck, user: user)
     sign_in(user)
     visit deck_path(Deck.first)
-    expect(page).to have_content("Edit Deck")
+    expect(page).to have_xpath("//a[@href='/decks/#{deck.id}/edit']")
+    expect(page).to have_xpath("//a[@href='/decks/#{deck.id}']")
   end
 
   scenario "hides edit/delete if deck does not belong to current_user" do
@@ -15,12 +16,12 @@ feature "edit deck" do
     deck = Fabricate(:deck, user: user_2)
     sign_in(user)
     visit deck_path(Deck.first)
-    expect(page).not_to have_content("Edit Deck")
-    expect(page).not_to have_content("Delete Deck")
+    expect(page).not_to have_xpath("//a[@href='/decks/#{deck.id}/edit']")
+    expect(page).not_to have_xpath("//a[@href='/decks/#{deck.id}']")
   end
 end
 
-feature "deck form behavior" do
+feature "create/edit deck form behavior" do
   let(:user) { Fabricate(:user) }
   let(:deck) { Fabricate(:deck, user: user) }
   background { sign_in(user) }

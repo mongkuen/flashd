@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :hide_from_user, only: [:new, :create]
+  before_action :require_user, only: [:my_cards]
 
   def new
     @user = User.new
@@ -13,6 +14,10 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def my_cards
+    @decks = current_user.decks
   end
 
   private

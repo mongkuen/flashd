@@ -1,0 +1,8 @@
+<%= bootstrap_form_for [@deck, @card] do |f| %>
+  <%= f.text_field :title, hide_label: true, placeholder: "Card Title (Required)" %>
+  <%= f.text_field :heading, hide_label: true, placeholder: "Backside Heading" %>
+  <%= f.text_area :description, :rows => "6", hide_label: true, placeholder: "Backside Description" %>
+  <%= f.text_area :img_url, :rows => "2", hide_label: true, placeholder: "Background Image Url (Optional)" %>
+  <%= f.submit @card.new_record? ? "Create Card" : "Edit Card", class: "btn btn-primary" %>
+  <%= link_to "Back", "javascript:history.back()", class: "btn btn-danger" %>
+<% end %>

@@ -2,9 +2,9 @@
   <div class="overlay">
     <div class="centered-card">
       <div class="border">
-        <h1>Edit Deck:</h1>
+        <h1><%= @deck.name %></h1>
         <hr>
-        <h2><%= @deck.name %></h2>
+        <h2>Edit Deck:</h2>
         <br>
         <%= render 'deck_form' %>
       </div>

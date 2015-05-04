@@ -7,7 +7,8 @@ class DecksController < ApplicationController
   end
 
   def index
-    @decks = Deck.recent_decks
+    # @decks = Deck.recent_decks
+    @decks = Deck.all
   end
 
   def new

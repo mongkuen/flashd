@@ -1,7 +1,7 @@
 <div class="background" style="background-image: url(<%= @deck.img_url %>)">
   <div class="overlay">
     <div class="centered-card">
-      <div class="border">
+      <%= link_to deck_cards_path(@deck), class: "border" do %>
         <h1><%= @deck.name %></h1>
         <hr>
         <h3>Deck Created:</h3>
@@ -9,10 +9,18 @@
         <h3>Cards in Deck:</h3>
         <p><%= @deck.cards.count %></p>
         <% if @deck.user == current_user %>
-          <%= link_to "Edit Deck", edit_deck_path(@deck), class: "btn btn-primary" %>
-          <%= link_to "Delete Deck", deck_path(@deck), method: :delete, data: { confirm: 'Are you sure? This cannot be un-done.' }, class: "btn btn-danger" %>
+          <%= link_to edit_deck_path(@deck) do%>
+            <div class="edit-icons">
+              <i class="fa fa-pencil fa-2x"></i>
+            </div>
+          <% end %>
+          <%= link_to deck_path(@deck), method: :delete, data: { confirm: 'Delete this deck and all cards? This cannot be un-done.' } do %>
+            <div class="edit-icons">
+              <i class="fa fa-trash-o fa-2x"></i>
+            </div>
+          <% end %>
         <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

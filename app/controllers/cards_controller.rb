@@ -1,7 +1,9 @@
 class CardsController < ApplicationController
-  before_action :set_deck, only: [:index, :new, :create]
+  before_action :set_deck, except: [:show]
+  before_action :set_card, only: [:show, :edit, :update, :destroy]
   before_action :require_user_signup, only: [:new, :create]
-  before_action only: [:new, :create] do
+  before_action :require_user, only: [:edit, :update, :destroy]
+  before_action except: [:show, :index] do
     deny_access(@deck)
   end
 
@@ -25,8 +27,21 @@ class CardsController < ApplicationController
     end
   end
 
-  def show
-    @card = Card.find(params[:id])
+  def show; end
+
+  def edit; end
+
+  def update
+    if @card.update(card_params)
+      redirect_to deck_cards_path(@deck)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @card.destroy
+    redirect_to deck_cards_path(@deck)
   end
 
   private
@@ -36,5 +51,9 @@ class CardsController < ApplicationController
 
   def card_params
     params.require(:card).permit(:title, :heading, :description, :img_url)
+  end
+
+  def set_card
+    @card = Card.find(params[:id])
   end
 end

@@ -1,7 +1,7 @@
 <div class="row row-no-gutter">
   <div class="col-xs-6 col-sm-3 title" style="background-image: url(<%= asset_path "black.jpg" %>)">
     <%= link_to deck_path(@deck), class: "overlay", style: "word-wrap: breakword; white-space: normal;" do %>
-      <h1 class="add"><%= @deck.name.titleize %></h1>
+      <h1 class="add"><i class="fa fa-info-circle"></i><br>Deck Info</h1>
     <% end %>
   </div>
   <% if @deck.user == current_user %>

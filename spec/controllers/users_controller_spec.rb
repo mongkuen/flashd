@@ -56,4 +56,24 @@ describe UsersController do
       let(:action) { post :create }
     end
   end
+
+  describe "GET my_cards" do
+    before { set_current_user }
+
+    it "sets @decks" do
+      deck = Fabricate(:deck, user: current_user)
+      deck_2 = Fabricate(:deck, user: current_user)
+      get :my_cards
+      expect(assigns(:decks).count).to eq(2)
+    end
+
+    it "renders my_cards" do
+      get :my_cards
+      expect(response).to render_template(:my_cards)
+    end
+
+    it_behaves_like "require user" do
+      let(:action) { get :my_cards }
+    end
+  end
 end
