@@ -3,7 +3,7 @@ class Deck < ActiveRecord::Base
   belongs_to :user
   has_many :cards, dependent: :destroy
 
-  def self.recent_decks
-    self.first(30).sort_by(&:created_at).reverse
-  end
+  # def self.recent_decks
+  #   self.first(30).sort_by(&:created_at).reverse
+  # end
 end
